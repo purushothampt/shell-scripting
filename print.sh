@@ -13,4 +13,5 @@ echo "Hello World"
 # syntax : echo -e "\e[31mHello\e[0m"
 
 echo -e "\e[31mHello\e[0m" World
+echo -e "\e[32mHello\e[0m" "\e[31mWorld\e[0m"
 
