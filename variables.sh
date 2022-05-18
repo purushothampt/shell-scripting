@@ -12,6 +12,6 @@ echo Todays date is $Date
 
 #command
 Date=$(date +%F)
-Time=$(Date +%T)
+Time=$(date +%T)
 echo Todays date is $Date
 echo Now the time is $Time
