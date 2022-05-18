@@ -41,3 +41,9 @@ c=(1000 2000 400 20)
 echo First value in array is ${c[0]}
 echo Second value in array is ${c[1]}
 echo Third value in array is ${c[2]}
+
+
+#local variables/environment variables
+train =$Training
+echo $train
+
