@@ -18,7 +18,7 @@ month=$(date +%m)
 echo Todays date is $Date
 echo Now the time is $Time
 echo The Day is $Day
-echo The month is $Month
+echo The month is $month
 
 #expression
 a=100
