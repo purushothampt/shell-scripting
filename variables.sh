@@ -47,3 +47,4 @@ echo Third value in array is ${c[2]}
 echo train =${Training}
 
 
+echo today_date is $dte
