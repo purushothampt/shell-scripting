@@ -13,3 +13,4 @@ echo Todays date is $Date
 #command
 Date=$(date +%F)
 echo Todays date is $Date
+
