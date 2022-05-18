@@ -15,3 +15,9 @@ Date=$(date +%F)
 Time=$(date +%T)
 echo Todays date is $Date
 echo Now the time is $Time
+
+#expression
+a=100
+b=200
+add=$(($a + $b))
+echo the sum is $add
