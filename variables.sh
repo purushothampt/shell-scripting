@@ -34,5 +34,5 @@ echo First value of array is ${a[0]}
 echo Second value of array is ${a[1]}
 echo Third value of array is ${a[2]}
 echo Fourth value of array is ${a[3]}
-echo All value of array is $a{[*]}
+echo All value of array is ${a[*]}
 echo Count of Array is ${#a[*]}
