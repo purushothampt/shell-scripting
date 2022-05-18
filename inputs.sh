@@ -13,7 +13,7 @@ echo 'I have $100 Apples'
 echo "I have $100 Apples"
 echo "I have \$100 Apples"
 
-Training = DevOps
+Training=DevOps
 echo 'My Training is $Training'
 echo "My Training is $Training"
 echo "My Training is \$Training"
