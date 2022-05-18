@@ -45,5 +45,5 @@ echo Third value in array is ${c[2]}
 
 #local variables/environment variables
 train =$Training
-echo $train
+echo ${train}
 
