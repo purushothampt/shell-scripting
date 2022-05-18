@@ -36,3 +36,8 @@ echo Third value of array is ${a[2]}
 echo Fourth value of array is ${a[3]}
 echo All value of array is ${a[*]}
 echo Count of Array is ${#a[*]}
+c=(1000 2000 400 20)
+
+echo First value in array is ${c[0]}
+echo Second value in array is ${c[1]}
+echo Third value in array is ${c[2]}
