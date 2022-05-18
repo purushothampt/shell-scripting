@@ -5,4 +5,4 @@ b=puru
 
 echo $a
 echo $b is my name
-echo $bshotham
+echo ${b}shotham
