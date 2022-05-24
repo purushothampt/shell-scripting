@@ -12,7 +12,7 @@ yum install nginx -y
 if [ $? -eq 0 ]; then
   echo -e "\e[32m SUCCESS \e[0m"
 else
-  echo -e "\e31m FAILURE \e[0m"
+  echo -e "\e[31m FAILURE \e[0m"
   exit 2
 fi
 echo -e "\e[36m Downloading Nginx Content \e[0m "
@@ -20,7 +20,7 @@ curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/f
 if [ $? -eq 0 ]; then
   echo -e "\e[32m SUCCESS \e[0m"
 else
-  echo -e "\e31m FAILURE \e[0m"
+  echo -e "\e[31m FAILURE \e[0m"
   exit 2
 fi
 
@@ -36,7 +36,7 @@ mv localhost.conf /etc/nginx/default.d/roboshop.conf
 if [ $? -eq 0 ]; then
   echo -e "\e[32m SUCCESS \e[0m"
 else
-  echo -e "\e31m FAILURE \e[0m"
+  echo -e "\e[31m FAILURE \e[0m"
   exit 2
 fi
 echo -e "\e[36m Start Nginx \e[0m"
@@ -45,6 +45,6 @@ systemctl restart nginx
 if [ $? -eq 0 ]; then
   echo -e "\e[32m SUCCESS \e[0m"
 else
-  echo -e "\e31m FAILURE \e[0m"
+  echo -e "\e[31m FAILURE \e[0m"
   exit 2
 fi
