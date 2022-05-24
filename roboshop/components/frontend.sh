@@ -2,7 +2,7 @@
 
 USER_ID = $(id -u)
 
-if USER_ID -ne 0; then
+if $USER_ID -ne 0; then
   echo -e "\e[31m User should be a Root User \e[0m"
   exit
 fi
