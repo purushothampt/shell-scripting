@@ -12,7 +12,8 @@ fi
 }
 
 Print() {
-echo -e "\e[36m $1 \e[0m"
+  echo -e "\n ----------------- $1 --------------------" >> $LOG_FILE
+  echo -e "\e[36m $1 \e[0m"
 }
 
 LOG_FILE=/tmp/roboshop.log
