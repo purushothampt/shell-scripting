@@ -10,20 +10,23 @@ else
 fi
 }
 
+Print() {
+echo -e "\e[36m $1 \e[0m"
+}
 if [ $USER_ID -ne 0 ]; then
   echo -e "\e[31m User should be a Root User \e[0m"
   exit 1
 fi
 
-echo -e "\e[36m Installing Nginx \e[0m"
+Print " Installing Nginx "
 yum install nginx -y
 StatCheck $?
 
-echo -e "\e[36m Downloading Nginx Content \e[0m "
+Print " Downloading Nginx Content "
 curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
 StatCheck $?
 
-echo -e "\e[36m Cleanup old content and extract new archive \e[0m"
+Print " Cleanup old content and extract new archive "
 rm -rf /usr/share/nginx/html/*
 cd /usr/share/nginx/html/
 unzip /tmp/frontend.zip
@@ -33,7 +36,7 @@ mv static/* .
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 StatCheck $?
 
-echo -e "\e[36m Start Nginx \e[0m"
+Print " Start Nginx "
 systemctl enable nginx
 systemctl restart nginx
 StatCheck $?
