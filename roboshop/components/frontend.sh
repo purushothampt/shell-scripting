@@ -4,8 +4,9 @@ USER_ID=$(id -u)
 
 if [ $USER_ID -ne 0 ]; then
   echo -e "\e[31m User should be a Root User \e[0m"
-  exit
+  exit 1
 fi
+
 echo -e "\e[36m Installing Nginx \e[0m"
 yum install nginx -y
 systemctl start nginx
