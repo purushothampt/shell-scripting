@@ -39,7 +39,7 @@ StatCheck $?
 cd /usr/share/nginx/html/
 
 Print " Extracting Archive "
-unzip /tmp/frontend.zip >> $LOG_FILE && mv frontend-main/* . >> $LOG_FILE && mv static/* .  &>> $LOG_FILE
+unzip /tmp/frontend.zip &>> $LOG_FILE && mv frontend-main/* . &>> $LOG_FILE && mv static/* .  &>> $LOG_FILE
 StatCheck $?
 
 Print " Update Roboshop Configuration "
@@ -47,5 +47,5 @@ mv localhost.conf /etc/nginx/default.d/roboshop.conf  &>> $LOG_FILE
 StatCheck $?
 
 Print " Start Nginx "
-systemctl enable nginx >> $LOG_FILE && systemctl restart nginx  &>> $LOG_FILE
+systemctl enable nginx &>> $LOG_FILE && systemctl restart nginx  &>> $LOG_FILE
 StatCheck $?
