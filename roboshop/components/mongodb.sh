@@ -27,6 +27,6 @@ cd /tmp &>> $LOG_FILE && unzip mongodb.zip  &>> $LOG_FILE
 StatCheck $?
 
 Print "Load Schema"
-cd mongodb-main &>> $LOG_FILE && cd mongo < catalogue.js &>> $LOG_FILE && mongo < users.js &>> $LOG_FILE
+cd mongodb-main &>> $LOG_FILE && mongo < catalogue.js &>> $LOG_FILE && mongo < users.js &>> $LOG_FILE
 StatCheck $?
 
