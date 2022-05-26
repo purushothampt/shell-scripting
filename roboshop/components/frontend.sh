@@ -27,3 +27,7 @@ StatCheck $?
 Print " Start Nginx "
 systemctl enable nginx &>> $LOG_FILE && systemctl restart nginx  &>> $LOG_FILE
 StatCheck $?
+
+Print " Update Roboshop Config file for Catalogue"
+sed -i -e '/catalogue/s/localhost/catalogue.roboshop.internal/' /etc/nginx/default.d/roboshop.conf
+StatCheck $?

@@ -2,13 +2,6 @@
 
 source components/common.sh
 
-# useradd roboshop
-#1. Update SystemD file with correct IP addresses
-#
-#    Update `MONGO_DNSNAME` with MongoDB Server IP
-#
-#2. Now, lets set up the service with systemctl.
-
 Print "Configure Yum repos"
 curl -f -sL https://rpm.nodesource.com/setup_lts.x | bash - &>> $LOG_FILE
 StatCheck $?
@@ -52,3 +45,4 @@ StatCheck $?
 Print "Restart Catalogue service"
 systemctl daemon-reload &>> $LOG_FILE && systemctl start catalogue &>> $LOG_FILE && systemctl enable catalogue &>> $LOG_FILE
 StatCheck $?
+
