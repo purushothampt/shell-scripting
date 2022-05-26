@@ -49,6 +49,6 @@ Print "Setup systemD file"
 sed -i 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service &>> $LOG_FILE && mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service &>> $LOG_FILE
 StatCheck $?
 
-Print "Restart systemD file"
+Print "Restart Catalogue service"
 systemctl daemon-reload &>> $LOG_FILE && systemctl start catalogue &>> $LOG_FILE && systemctl enable catalogue &>> $LOG_FILE
 StatCheck $?
