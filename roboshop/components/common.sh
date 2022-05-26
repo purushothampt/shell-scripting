@@ -14,6 +14,7 @@ Print() {
   echo -e "\n ----------------- $1 --------------------" &>> $LOG_FILE
   echo -e "\e[36m $1 \e[0m"
 }
+APP_USER=roboshop
 
 LOG_FILE=/tmp/roboshop.log
 rm -f $LOG_FILE
@@ -23,4 +24,3 @@ if [ $USER_ID -ne 0 ]; then
   exit 1
 fi
 
-APP_USER=roboshop
