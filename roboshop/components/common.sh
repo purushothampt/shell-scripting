@@ -63,8 +63,7 @@ chown -R $APP_USER:$APP_USER /home/$APP_USER &>> $LOG_FILE
 StatCheck $?
 
 Print "Setup systemD file"
-sed -i 's/MONGO_DNSNAME/mongodb.roboshop.internal/' &>> $LOG_FILE  -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' &>> $LOG_FILE
-    -e  's/MONGO_ENDPOINT/mongodb.roboshop.internal/' &>> $LOG_FILE /home/roboshop/$COMPONENT/systemd.service &>> $LOG_FILE && mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service &>> $LOG_FILE
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e  's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/roboshop/$COMPONENT/systemd.service &>> $LOG_FILE && mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service &>> $LOG_FILE
 StatCheck $?
 
 Print "Restart Catalogue service"
