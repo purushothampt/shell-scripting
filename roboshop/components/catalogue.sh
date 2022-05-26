@@ -17,6 +17,10 @@ Print "Install NodeJS"
 yum install nodejs gcc-c++ -y &>> $LOG_FILE
 StatCheck $?
 
+Print "Add User"
+useradd roboshop &>> $LOG_FILE
+StatCheck $?
+
 Print "Download App Dependencies"
 curl -f -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>> $LOG_FILE
 StatCheck $?
