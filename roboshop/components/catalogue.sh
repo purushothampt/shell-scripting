@@ -26,7 +26,7 @@ curl -f -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/
 StatCheck $?
 
 Print "Clear old Content"
-rm -rf /home/roboshop &>> $LOG_FILE
+rm -rf /home/roboshop/catalogue &>> $LOG_FILE
 StatCheck $?
 
 Print "Extract App Dependencies"
