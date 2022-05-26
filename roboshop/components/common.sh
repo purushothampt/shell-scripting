@@ -23,4 +23,4 @@ if [ $USER_ID -ne 0 ]; then
   exit 1
 fi
 
-App_User=roboshop
+APP_USER=roboshop
