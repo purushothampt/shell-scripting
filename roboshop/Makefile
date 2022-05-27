@@ -10,3 +10,13 @@ redis:
 	bash components/redis.sh
 user:
 	bash components/user.sh
+mysql:
+	bash components/mysql.sh
+shipping:
+	bash components/shipping.sh
+payment:
+	bash components/payment.sh
+rabbitmq:
+	bash components/rabbitmq.sh
+dispatch:
+	bash components/dispatch.sh
