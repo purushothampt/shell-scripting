@@ -39,7 +39,7 @@ if [ $? -eq 0 ]; then
 fi
 
 Print "Download Schema"
-curl -f s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>> $LOG_FILE
+curl -f -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>> $LOG_FILE
 StatCheck $?
 
 #Print "Extract Schema"
