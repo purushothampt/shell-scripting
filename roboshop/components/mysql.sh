@@ -15,7 +15,7 @@ Print "Install MySQl"
 yum install mysql-community-server -y &>> $LOG_FILE
 StatCheck $?
 
-Print "Start MySQl service"
+Print "Start MySQL service"
 systemctl enable mysqld &>> $LOG_FILE && systemctl start mysqld &>> $LOG_FILE
 StatCheck $?
 
@@ -38,7 +38,15 @@ if [ $? -eq 0 ]; then
   StatCheck $?
 fi
 
+Print "Download Schema"
+curl -f s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>> LOG_FILE
+StatCheck $?
 
-#Print "Download Schema"
+Print "Extract Schema"
+cd /tmp &>> LOG_FILE && unzip -o mysql.zip &>> LOG_FILE
+StatCheck $?
 
+Print "Load Schema"
+cd mysql-main &>> LOG_FILE && mysql -u root -pRoboShop@1 <shipping.sql &>> LOG_FILE
+StatCheck $?
 
