@@ -42,9 +42,9 @@ Print "Download Schema"
 curl -f s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>> $LOG_FILE
 StatCheck $?
 
-Print "Extract Schema"
-cd /tmp && unzip -o mysql.zip &>> $LOG_FILE
-StatCheck $?
+#Print "Extract Schema"
+#cd /tmp && unzip -o mysql.zip &>> $LOG_FILE
+#StatCheck $?
 
 #Print "Load Schema"
 #cd mysql-main &>> $LOG_FILE && mysql -uroot -pRoboShop@1 <shipping.sql &>> $LOG_FILE
