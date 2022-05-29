@@ -25,7 +25,7 @@ mv localhost.conf /etc/nginx/default.d/roboshop.conf  &>> $LOG_FILE
 StatCheck $?
 
 Print " Update Roboshop Config file for Catalogue"
-for component in cart catalogue user; do
+for component in cart catalogue user shipping; do
   sed -i -e '/$component/s/localhost/$component.roboshop.internal/' /etc/nginx/default.d/roboshop.conf &>> $LOG_FILE
 StatCheck $?
 
