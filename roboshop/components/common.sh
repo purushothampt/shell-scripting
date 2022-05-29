@@ -85,7 +85,7 @@ NODEJS() {
 
 }
 
-Maven(){
+MAVEN(){
   Print "Install Maven"
   yum install maven -y &>> $LOG_FILE
   StatCheck $?
