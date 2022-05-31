@@ -24,3 +24,7 @@ fi
 Print "Configure Application User"
 rabbitmqctl set_user_tags roboshop administrator &>> LOG_FILE && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>> LOG_FILE
 StatCheck $?
+
+Print "Restart rabbitmq"
+systemctl restart rabbitmq-server &>> LOG_FILE
+StatCheck $?
