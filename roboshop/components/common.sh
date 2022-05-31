@@ -115,3 +115,16 @@ PYTHON(){
 
   SERVICE_SETUP
 }
+
+GOLANG(){
+  Print "Install GOLang"
+  yum install golang -y &>> $LOG_FILE
+  StatCheck $?
+
+  APP_SETUP
+
+  Print "GO Lang Commands Execution"
+  cd /home/$APP_USER/$COMPONENT &>> $LOG_FILE && go mod init dispatch &>> LOG_FILE && go get &>> LOG_FILE && go build &>> LOG_FILE
+
+  SERVICE_SETUP
+}
