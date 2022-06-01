@@ -55,7 +55,7 @@ SERVICE_SETUP() {
         -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' \
         -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' \
         -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' \
-        -e 's/CARTENDPOINT/shipping.roboshop.internal/' \
+        -e 's/CARTENDPOINT/cart.roboshop.internal/' \
         -e 's/CARTHOST/cart.roboshop.internal/' \
         -e 's/USERHOST/user.roboshop.internal/' \
         -e 's/AMQPHOST/rabbitmq.roboshop.internal/' \
