@@ -11,7 +11,7 @@ LOG_FILE=/tmp/roboshop.log
 rm -f $LOG_FILE
 
 Print() {
-  echo -e "------------------$1------------------ "
+  echo -e "------------------$1------------------ " &>> LOG_FILE
   echo -e "\e[33m $1 \e[0m"
 }
 
