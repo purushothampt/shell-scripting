@@ -63,7 +63,7 @@ SERVICE_SETUP() {
  StatCheck $?
 
  Print "Restart $COMPONENT service"
- systemctl daemon-reload &>> $LOG_FILE && systemctl start $COMPONENT &>> $LOG_FILE && systemctl enable $COMPONENT &>> $LOG_FILE
+ systemctl daemon-reload &>> $LOG_FILE && systemctl restart $COMPONENT &>> $LOG_FILE && systemctl enable $COMPONENT &>> $LOG_FILE
  StatCheck $?
 
 }
