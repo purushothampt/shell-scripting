@@ -1,5 +1,7 @@
 #! /bin/bash
 
+source components/common.sh
+
 echo -e "\e[36m Install nginx \e[0m"
 yum install nginx -y
 
@@ -22,3 +24,4 @@ mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
 echo -e "\e[36m restart nginx \e[0m"
 systemctl restart nginx
+
