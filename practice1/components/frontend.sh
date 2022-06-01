@@ -1,5 +1,7 @@
 #! /bin/bash
 
+source components/common.sh
+
 Print " Install NGINX "
 yum install nginx -y &>> $LOG_FILE
 StatCheck $?
@@ -12,7 +14,7 @@ Print " Download yum repos "
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>> $LOG_FILE
 StatCheck $?
 
-Print " Caleaning old Files "
+Print " Cleaning old Files "
 rm -rf /usr/share/nginx/html/* &>> $LOG_FILE
 StatCheck $?
 
