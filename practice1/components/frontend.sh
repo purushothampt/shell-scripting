@@ -22,7 +22,7 @@ StatCheck $?
 cd /usr/share/nginx/html/
 
 echo -e "\e[36m Extracting Archives \e[0m"
-unzip /tmp/frontend.zip && mv frontend-main/* . && mv static/* . &>> $LOG_FILE
+unzip /tmp/frontend.zip &>> $LOG_FILE && mv frontend-main/* . &>> $LOG_FILE && mv static/* . &>> $LOG_FILE
 StatCheck $?
 
 echo -e "\e[36m update roboshop configuration \e[0m"
