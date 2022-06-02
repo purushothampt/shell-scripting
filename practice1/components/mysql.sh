@@ -29,10 +29,13 @@ if [ $? -ne 0 ]; then
   StatCheck $?
 fi
 
-Print " Uninstall Plugin "
-echo 'uninstall plugin validate_password' >/tmp/rootplugin.sql
-mysql --connect-expired-password -uroot -pRoboShop@1 </tmp/rootplugin.sql &>> $LOG_FILE
-StatCheck $?
+echo 'show plugins' | mysql -uroot -pRoboShop@1 2>> $LOG_FILE | grep validate_password &>>LOG_FILE
+if [ $? -eq 0 ]; then
+  Print " Uninstall Plugin "
+  echo 'uninstall plugin validate_password' >/tmp/rootplugin.sql
+  mysql --connect-expired-password -uroot -pRoboShop@1 </tmp/rootplugin.sql &>> $LOG_FILE
+  StatCheck $?
+fi
 
 Print " Download Schema "
 curl -f -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>> $LOG_FILE
