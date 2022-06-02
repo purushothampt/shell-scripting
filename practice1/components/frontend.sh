@@ -24,6 +24,12 @@ Print " Extract from Archives "
 unzip /tmp/frontend.zip &>> $LOG_FILE && mv frontend-main/* . &>> $LOG_FILE && mv static/* . &>> $LOG_FILE && mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> $LOG_FILE
 StatCheck $?
 
+Print " Update roboshop Config File "
+for component in catalogue ; do
+  sed -i -e "/$component/s/localhost/$component.roboshop.internal/" /etc/nginx/default.d/roboshop.conf &>> $LOG_FILE
+  StatCheck $?
+done
+
 Print " Restart NGINX "
 systemctl restart nginx &>> $LOG_FILE
 StatCheck $?
