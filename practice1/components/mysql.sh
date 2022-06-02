@@ -39,9 +39,9 @@ curl -f -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysq
 StatCheck $?
 
 Print " Extract Schema "
-cd /tmp &>> LOG_FILE && unzip -o mysql.zip &>> LOG_FILE
+cd /tmp &>> $LOG_FILE && unzip -o mysql.zip &>> $LOG_FILE && cd mysql-main &>> $LOG_FILE
 StatCheck $?
 
 Print " Load Schema "
-mysql -uroot -pRoboShop@1 <shipping.sql
+mysql -uroot -pRoboShop@1 < shipping.sql
 StatCheck $?
