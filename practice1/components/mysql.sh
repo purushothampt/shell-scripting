@@ -29,7 +29,7 @@ if [ $? -ne 0 ]; then
   StatCheck $?
 fi
 
-echo " Uninstall Plugin "
+Print " Uninstall Plugin "
 echo 'uninstall plugin validate_password;' > /tmp/rootplugin.sql &>> $LOG_FILE
 mysql -uroot -pRoboShop@1 < /tmp/rootplugin.sql &>> $LOG_FILE
 StatCheck $?
