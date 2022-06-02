@@ -28,7 +28,7 @@ if [ $? -ne 0 ]; then
   StatCheck $?
 fi
 
-#2 >> LOG_FILE will only redirect error to log file, if we give &>>
+# 2 >> LOG_FILE will only redirect error to log file, if we give &>>
 # both error and message will go to Log and Grep command will not get anything to execute
 echo 'show plugins' | mysql -uroot -pRoboShop@1 2>> $LOG_FILE | grep validate_password &>> $LOG_FILE
 if [ $? -eq 0 ]; then
