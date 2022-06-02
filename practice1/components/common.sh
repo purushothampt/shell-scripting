@@ -104,7 +104,7 @@ MAVEN() {
 }
 
 PYTHON() {
-     Print " Install Maven "
+     Print " Install Python "
      yum install python36 gcc python3-devel -y &>> $LOG_FILE
      StatCheck $?
 
