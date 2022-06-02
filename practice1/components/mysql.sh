@@ -14,5 +14,11 @@ Print " Start MySQL"
 systemctl enable mysqld &>> $LOG_FILE && systemctl start mysqld &>> $LOG_FILE
 StatCheck $?
 
+# Need to grep for old password in log and move to a variable
+# Below SET command is used to update the Password, we are storing the SQL query i a file
+# connect to my SQL with Default Password and then UPDATE new password
+Print " Change Default Password "
 DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
-echo -e $DEFAULT_PASSWORD
+echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/rootpass.sql
+mysql -uroot -p$DEFAULT_PASSWORD < /tmp/rootpass.sql
+StatCheck $?
