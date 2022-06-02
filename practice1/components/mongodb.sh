@@ -6,7 +6,7 @@ Print " Setup MongoDB repos "
 curl -f -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>> $LOG_FILE
 StatCheck $?
 
-Print "Install Mongo and Start service "
+Print " Install Mongo and Start service "
 yum install -y mongodb-org &>> $LOG_FILE && systemctl enable mongod &>> $LOG_FILE && systemctl start mongod &>> $LOG_FILE
 StatCheck $?
 

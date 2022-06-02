@@ -11,7 +11,7 @@ LOG_FILE=/tmp/roboshop.log
 rm -f $LOG_FILE
 
 Print() {
-  echo -e "------------------$1------------------ " &>> LOG_FILE
+  echo -e "------------------$1------------------ " &>> $LOG_FILE
   echo -e "\e[33m $1 \e[0m"
 }
 
@@ -26,7 +26,7 @@ StatCheck(){
 APP_USER=roboshop
 
 APP_SETUP() {
-  id $APP_USER $>> $LOG_FILE
+  id $APP_USER &>> $LOG_FILE
   if [ $? -ne 0 ]; then
     Print " Add user to the service "
     useradd $APP_USER &>> $LOG_FILE
@@ -38,7 +38,7 @@ APP_SETUP() {
   StatCheck $?
 
   Print " Extract Catalogue repos  "
-  cd /home/roboshop &>> $LOG_LOG_FILE unzip /tmp/$COMPONENT.zip &>> $LOG_FILE && mv $COMPONENT-main $COMPONENT &>> $LOG_FILE
+  cd /home/roboshop &>> $LOG_FILE unzip /tmp/$COMPONENT.zip &>> $LOG_FILE && mv $COMPONENT-main $COMPONENT &>> $LOG_FILE
   StatCheck $?
 
 }
