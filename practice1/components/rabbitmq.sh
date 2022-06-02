@@ -11,7 +11,7 @@ curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/sc
 StatCheck $?
 
 Print " Install Rabbit MQ "
-yum install rabbitmq-server -y
+yum install rabbitmq-server -y &>> $LOG_FILE
 StatCheck $?
 
 Print " Start RabbitMQ "
