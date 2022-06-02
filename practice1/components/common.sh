@@ -55,6 +55,7 @@ SERVICE_SETUP() {
   Print " Update SystemD File "
   sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' \
          -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' \
+         -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' \
          -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/$APP_USER/$COMPONENT/systemd.service &>> $LOG_FILE && mv /home/$APP_USER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service &>> $LOG_FILE
   StatCheck $?
 
