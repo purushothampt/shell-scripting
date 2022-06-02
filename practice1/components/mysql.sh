@@ -30,8 +30,8 @@ if [ $? -ne 0 ]; then
 fi
 
 Print " Uninstall Plugin "
-echo 'uninstall plugin validate_password;' > /tmp/rootplugin.sql &>> $LOG_FILE
-mysql -uroot -pRoboShop@1 < /tmp/rootplugin.sql &>> $LOG_FILE
+echo 'uninstall plugin validate_password' > /tmp/rootplugin.sql &>> $LOG_FILE
+mysql --connect-expired-password -uroot -pRoboShop@1 < /tmp/rootplugin.sql &>> $LOG_FILE
 StatCheck $?
 
 Print " Download Schema "
