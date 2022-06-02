@@ -13,3 +13,6 @@ StatCheck $?
 Print " Start MySQL"
 systemctl enable mysqld &>> $LOG_FILE && systemctl start mysqld &>> $LOG_FILE
 StatCheck $?
+
+DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
+echo -e $DEFAULT_PASSWORD
