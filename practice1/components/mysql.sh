@@ -20,7 +20,7 @@ StatCheck $?
 
 # we need to check if password is already signed, so we need to login wto mysql ith new password, if it works then password
 # is changed
-echo 'show databases' | mysql -uroot -uRoboShop@1 &>> $LOG_FILE
+echo 'show databases' | mysql -uroot -pRoboShop@1 &>> $LOG_FILE
 if [ $? -ne 0 ]; then
   Print " Change Default Password "
   DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
