@@ -33,15 +33,15 @@ APP_SETUP() {
     StatCheck $?
   fi
 
-  Print " Download Catalogue repos "
-  curl -f -s -L -o /tmp/$COMPONENT.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>> $LOG_FILE
+  Print " Download $COMPONENT repos "
+  curl -f -s -L -o /tmp/$COMPONENT.zip "https://github.com/roboshop-devops-project/$COMPONENT/archive/main.zip" &>> $LOG_FILE
   StatCheck $?
 
   Print " Clear Old file "
   rm -rf /home/$APP_USER/$COMPONENT &>> $LOG_FILE
   StatCheck $?
 
-  Print " Extract Catalogue repos  "
+  Print " Extract $COMPONENT repos  "
   cd /home/$APP_USER &>> $LOG_FILE && unzip /tmp/$COMPONENT.zip &>> $LOG_FILE && mv $COMPONENT-main $COMPONENT &>> $LOG_FILE
   StatCheck $?
 
