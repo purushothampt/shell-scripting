@@ -25,7 +25,7 @@ unzip /tmp/frontend.zip &>> $LOG_FILE && mv frontend-main/* . &>> $LOG_FILE && m
 StatCheck $?
 
 Print " Update roboshop Config File "
-for component in catalogue user cart ; do
+for component in catalogue user cart shipping payment; do
   sed -i -e "/$component/s/localhost/$component.roboshop.internal/" /etc/nginx/default.d/roboshop.conf &>> $LOG_FILE
   StatCheck $?
 done

@@ -56,6 +56,11 @@ SERVICE_SETUP() {
   sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' \
          -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' \
          -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' \
+         -e 's/CARTENDPOINT/cart.roboshop.internal/' \
+         -e 's/DBHOST/mysql.roboshop.internal/' \
+         -e 's/CARTHOST/cart.roboshop.internal/' \
+         -e 's/USERHOST/user.roboshop.internal/' \
+         -e 's/AMQPHOST/rabbitmq.roboshop.internal/' \
          -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/$APP_USER/$COMPONENT/systemd.service &>> $LOG_FILE && mv /home/$APP_USER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service &>> $LOG_FILE
   StatCheck $?
 
@@ -82,4 +87,32 @@ NODEJS(){
 
   SERVICE_SETUP
 
+}
+
+MAVEN() {
+    Print " Install Maven "
+    yum install maven -y &>> $LOG_FILE
+    StatCheck $?
+
+    APP_SETUP
+
+    Print " Install App Dependencies  "
+    cd /home/$APP_USER/$COMPONENT &>> $LOG_FILE && mvn clean package &>> $LOG_FILE && mv target/shipping-1.0.jar shipping.jar &>> $LOG_FILE
+    StatCheck $?
+
+    SERVICE_SETUP
+}
+
+PYTHON() {
+     Print " Install Maven "
+     yum install python36 gcc python3-devel -y &>> $LOG_FILE
+     StatCheck $?
+
+     APP_SETUP
+
+     Print " Install App Dependencies  "
+     cd /home/$APP_USER/$COMPONENT &>> $LOG_FILE && pip3 install -r requirements.txt &>> $LOG_FILE
+     StatCheck $?
+
+     SERVICE_SETUP
 }
