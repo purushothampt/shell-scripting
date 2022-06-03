@@ -1,7 +1,7 @@
 #! /bin/bash
 
 if [ -z $1 ];then
-  echo "Input Machine name is needed"
+  echo "/e[31m Input Machine name is needed /e[0m"
 fi
 
 COMPONENT =$1
