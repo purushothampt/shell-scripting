@@ -21,6 +21,6 @@ PRIVATE_IP=$(aws ec2 run-instances \
   | jq '.Instances[].PrivateIpAddress'| sed -e 's/"//g')
 
 sed -e "s/COMPONENT/$COMPONENT/" -e "s/PRIVATE_IP/$PRIVATE_IP/" route53.json >/tmp/route53.json
-aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/route53. | jq
+aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/route53.json | jq
 
 
