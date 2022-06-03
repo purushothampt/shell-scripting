@@ -20,7 +20,7 @@ PRIVATE_IP=$(aws ec2 run-instances \
   | jq '."Instances"[].PrivateIpAddress' | sed -e 's/"//g')
 
 
-ZN_ID=$(aws route53 list-hosted-zones-by-name --dns-name roboshop.internal) | jq '.HostedZones[].Id'
+ZN_ID=$(aws route53 list-hosted-zones-by-name --dns-name roboshop.internal) | jq '.HostedZones[].DNSName'
 echo $ZN_ID
 sed -e "s/COMPONENT/$COMPONENT/" -e "s/PRIVATE_IP/$PRIVATE_IP/" route53.json >/tmp/record.json
 aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/record.json | jq
