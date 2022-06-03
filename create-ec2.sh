@@ -16,6 +16,7 @@ create_ec2(){
     --security-group-ids $SGID \
     --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent ,InstanceInterruptionBehavior=stop}" \
     | jq '."Instances"[].PrivateIpAddress' | sed -e 's/"//g')
+
     sed -e "s/COMPONENT/$COMPONENT/" -e "s/PRIVATE_IP/$PRIVATE_IP/" route53.json >/tmp/record.json
     aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/record.json | jq
 }
