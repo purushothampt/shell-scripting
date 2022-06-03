@@ -1,7 +1,7 @@
 #! /bin/bash
 
 if [ -z $1 ]; then
-  echo -e 'e\[31m Machine name is needed \e[0m'
+  echo -e '\e[31m Machine name is needed \e[0m'
 fi
 
 AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
