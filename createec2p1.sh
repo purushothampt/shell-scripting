@@ -16,6 +16,6 @@ PRIVATE_IP=$(aws ec2 run-instances \
   --security-group-ids $SG_ID \
   --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" \
   --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
-  | jq '.Instances[].PrivateIpAddress[]')
+  | jq '.Instances[].PrivateIpAddress')
 
 echo $PRIVATE_IP
