@@ -8,8 +8,7 @@ fi
 COMPONENT=$1
 ZONE_ID="Z07728992EJSXZZKABHJD"
 
-AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
-SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=Allow_all_traffic | jq '.SecurityGroups[].GroupId' | sed -e 's/"//g')
+CREATEEC2(){
 
 PRIVATE_IP=$(aws ec2 run-instances \
   --image-id $AMI_ID \
@@ -22,5 +21,17 @@ PRIVATE_IP=$(aws ec2 run-instances \
 
 sed -e "s/COMPONENT/$COMPONENT/" -e "s/PRIVATE_IP/$PRIVATE_IP/" route53.json >/tmp/route53.json
 aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/route53.json | jq
+}
 
+AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
+SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=Allow_all_traffic | jq '.SecurityGroups[].GroupId' | sed -e 's/"//g')
+
+if [ $1 == 'all' ]; then
+  for component in frontend catalogue cart shipping payment user mongodb rabbitmq redis mysql; do
+    COMPONENT=$component
+    CREATEEC2
+  done
+else
+  CREATEEC2
+fi
 
