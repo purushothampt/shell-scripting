@@ -2,6 +2,7 @@
 
 if [ -z $1 ];then
   echo "/e[31m Input Machine name is needed /e[0m"
+  exit 1
 fi
 
 COMPONENT =$1
