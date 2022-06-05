@@ -19,7 +19,7 @@ EC2_CREATE() {
 
   PRIVATE_IP=$(aws ec2 describe-instances  --filters "Name=tag-value,Values=$COMPONENT" --query "Reservations[*].Instances[*].[PrivateIpAddress]" --output text)
   echo $PRIVATE_IP
-  if [ -z "$PRIVATE_IP" && "$PRIVATE_IP" != 'None' ]; then
+  if [[ -z "$PRIVATE_IP" && "$PRIVATE_IP" != 'None' ]]; then
     #Find Security Group
     SG_ID=$(aws ec2 describe-security-groups --filters "Name=group-name,Values=Allow_all_traffic" --query "SecurityGroups[*].[GroupId]" --output text)
     if [ -z "$SG_ID" ]; then
