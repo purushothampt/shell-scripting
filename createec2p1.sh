@@ -36,7 +36,6 @@ EC2_CREATE() {
     echo -e "\e[1m Instance Created \e[0m"
   else
     echo "Instance $COMPONENT Already exists, Hence new EC2 is not created"
-    exit 1
   fi
   #create DNS Records
   ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[*].{name:Name,ID:Id}" --output text | grep roboshop.internal | awk '{print $1}' | awk -F / '{print $3}')
