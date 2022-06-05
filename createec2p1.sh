@@ -1,1 +1,1 @@
-aws ec2 describe-instances  --filters "Name=tag-value,Values=workstation" --output text
+aws ec2 describe-instances  --filters "Name=tag-value,Values=workstation" | jq
