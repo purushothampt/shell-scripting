@@ -19,7 +19,7 @@ EC2_CREATE() {
   if [ -z "$PRIVATE_IP" ]; then
     #Find Security Group
     SG_ID=$(aws ec2 describe-security-groups --filters "Name=group-name,Values=Allow_all_traffic" --query "SecurityGroups[*].[GroupId]" --output text)
-    if [ -z "$SG_ID"]; then
+    if [ -z "$SG_ID" ]; then
       echo -e "\e[31m Security Group does not exist\e[0m"
       exit 1
     fi
