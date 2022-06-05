@@ -4,8 +4,7 @@ if [ -z $1 ]; then
   exit 1
 fi
 
-EC2_CREATE()
-{
+EC2_CREATE() {
   COMPONENT=$1
   AMI_ID=$(aws ec2 describe-images --filters "Name='name',Values=Centos-7-DevOps-Practice" --query "Images[*].[ImageId]" --output text)
   if [ -z "$AMI_ID" ];then
