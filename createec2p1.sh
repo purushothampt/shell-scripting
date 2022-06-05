@@ -53,7 +53,7 @@ EC2_CREATE() {
   aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/route53.json --output text
   echo -e "\e[1m DNS Record Created \e[0m"
 
-}
+#}
 
 #main program
 
