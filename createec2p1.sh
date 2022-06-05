@@ -33,7 +33,7 @@ EC2_CREATE() {
         --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
         --security-group-ids $SG_ID \
         --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" &>>$LOG
-    echo -e "\e[1m Instance Created \e[0m"
+    echo -e "\e[1m Instance $COMPONENT Created \e[0m"
   else
     echo "Instance $COMPONENT Already exists, Hence new EC2 is not created"
   fi
@@ -55,7 +55,7 @@ EC2_CREATE() {
     }' | sed -e "s/DNSNAME/$COMPONENT/" -e "s/IPADDRESS/$IP_ADDRESS/" >/tmp/route53.json
 
   aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/route53.json --output text  &>>$LOG
-  echo -e "\e[1m DNS Record Created \e[0m"
+  echo -e "\e[1m DNS Record for $COMPONENT Created \e[0m"
 
 }
 
