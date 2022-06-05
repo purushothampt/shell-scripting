@@ -53,7 +53,7 @@ EC2_CREATE() {
   aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/route53.json --output text
   echo -e "\e[1m DNS Record Created \e[0m"
 
-#}
+}
 
 #main program
 
@@ -65,5 +65,6 @@ elif [ $1 == 'All' ]; then
     EC2_CREATE $component
   done
 else
+  echo $1
   EC2_CREATE $1
 fi
