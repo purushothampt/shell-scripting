@@ -14,7 +14,7 @@ EC2_CREATE() {
     echo -e "\e[32mAMI ID = $AMI_ID\e[0m"
   fi
 
-#  PRIVATE_IP=$(aws ec2 describe-instances  --filters "Name=tag-value,Values=$COMPONENT" --query "Reservations[*].Instances[*].[PrivateIpAddress]" --output text)
+  PRIVATE_IP=$(aws ec2 describe-instances  --filters "Name=tag-value,Values=$COMPONENT" --query "Reservations[*].Instances[*].[PrivateIpAddress]" --output text)
 #  if [ -z "$PRIVATE_IP" ]; then
 #    #Find Security Group
 #    SG_ID=$(aws ec2 describe-security-groups --filters "Name=group-name,Values=Allow_all_traffic" --query "SecurityGroups[*].[GroupId]" --output text)
@@ -65,6 +65,5 @@ elif [ $1 == 'All' ]; then
     EC2_CREATE $component
   done
 else
-  echo $1
   EC2_CREATE $1
 fi
