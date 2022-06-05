@@ -4,7 +4,8 @@ if [ -z $1 ]; then
   exit 1
 fi
 
-EC2_CREATE() {
+EC2_CREATE()
+{
 COMPONENT=$1
 AMI_ID=$(aws ec2 describe-images --filters "Name='name',Values=Centos-7-DevOps-Practice" --query "Images[*].[ImageId]" --output text)
 if [ -z "$AMI_ID" ];then
@@ -52,6 +53,7 @@ echo '{
 
 aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/route53.json --output text
 echo -e "\e[1m DNS Record Created \e[0m"
+
 }
 
 #main program
