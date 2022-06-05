@@ -1,1 +1,1 @@
-aws ec2 describe-instances  --filters "Name=tag-value,Values=workstation" | jq
+aws ec2 describe-instances  --filters "Name=tag-value,Values=workstation" | jq '."Instances[].PrivateIpAddress'
