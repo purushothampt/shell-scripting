@@ -4,6 +4,9 @@ if [ -z $1 ]; then
   exit 1
 fi
 
+LOG=/tmp/instance-create.log
+rm -f $LOG
+
 EC2_CREATE() {
   COMPONENT=$1
   AMI_ID=$(aws ec2 describe-images --filters "Name='name',Values=Centos-7-DevOps-Practice" --query "Images[*].[ImageId]" --output text)
@@ -51,7 +54,7 @@ EC2_CREATE() {
     }}]
     }' | sed -e "s/DNSNAME/$COMPONENT/" -e "s/IPADDRESS/$IP_ADDRESS/" >/tmp/route53.json
 
-  aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/route53.json --output text
+  aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/route53.json --output text  &>>$LOG
   echo -e "\e[1m DNS Record Created \e[0m"
 
 }
